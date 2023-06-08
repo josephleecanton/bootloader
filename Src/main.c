@@ -1,11 +1,10 @@
 
-
 #include <stdio.h>
 #include <stdint.h>
-#include "stm32f4xx.h"
-#include "stm32f411xe.h"
+//    # include "stm32f4xx.h"
+//    # include "stm32f411xe.h"
 #include "fpu.h"   /* don't have to include fpu.c - it's compiled separately from this file */
-#include "uart.h"  /* ditto */
+#include "uart.h"  /*  ditto */
 
 
 /*
