@@ -13,11 +13,7 @@
  *
  */
 
-#include <stdio.h>
-#include <stdint.h>
-#include "stm32f4xx.h"
-#include "stm32f411xe.h"
-void fpu_enable(void);       /* also in fpu.h */
+#include "fpu.h"
 
 
 void fpu_enable(){

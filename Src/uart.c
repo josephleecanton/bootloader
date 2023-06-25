@@ -5,8 +5,9 @@
 #include "stm32f411xe.h"
 
 #define BUSFREQ 16000000
-#define TXBAUD 57600
-static long unsigned int compute_baud_rate_div(long unsigned int x, long unsigned int y);
+#define TXBAUD 115200
+static uint16_t compute_baud_rate_div(uint32_t busfreq, uint32_t txbaudrate);
+static void uart_set_baudrate(uint32_t busfreq,uint32_t txbaudrate);
 static void uart_write(int ch);
 /* static fns don't go into header files, used only in this file */
 
@@ -27,10 +28,8 @@ GPIOA->AFR[0] &=~(1U<<11);
 RCC->APB1ENR |= RCC_APB1ENR_USART2EN;
 
 /* config UART2 baud rate */
+uart_set_baudrate(BUSFREQ,TXBAUD);
 
-long unsigned int x = BUSFREQ;
-long unsigned int y = TXBAUD;
-USART2->BRR = compute_baud_rate_div(x,  y);
 
 /* configure transfer  direction */
 
@@ -60,10 +59,13 @@ static void uart_write(int ch){
 	}
 
 
-static long unsigned int compute_baud_rate_div(long unsigned int busfreq, long unsigned int txbaudrate){
-
-	long unsigned int x =    (   (   busfreq + (txbaudrate/2U)  )/txbaudrate);
+static uint16_t compute_baud_rate_div(uint32_t busfreq, uint32_t txbaudrate){
+	uint16_t x =    (   (   busfreq + (txbaudrate/2U)  )/txbaudrate);
 	return x;
+}
+
+static void uart_set_baudrate(uint32_t busfreq,uint32_t txbaudrate) {
+	USART2->BRR = compute_baud_rate_div(busfreq,txbaudrate);
 }
 
 

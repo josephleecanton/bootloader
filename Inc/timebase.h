@@ -1,12 +1,18 @@
 /*
  * timebase.h
- *
- *  Created on: Jun 7, 2023
- *      Author: josep
  */
 
+// Paths & Symbols must contain
 #ifndef __TIMEBASE_H__
 #define __TIMEBASE_H__
+
+#include <stdint.h>
+uint32_t get_recent_tick_count(void);
+void delay(uint32_t delay_count);
+void timebase_init(void);
+
 #endif
-uint32_t get_tick(void);
-void delay(uint32_t xseconds);
+
+
+
+
