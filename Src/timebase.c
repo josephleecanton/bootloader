@@ -56,8 +56,8 @@ void timebase_init(void){
 
 #define MAX_DELAY   0xFFFFFFFF
 #define TICK_FREQ   1
-static uint32_t g_curr_tick;
-static uint32_t g_curr_tick_p;
+static volatile uint32_t g_curr_tick;
+static volatile uint32_t g_curr_tick_p;
 
 /* functiion to delay a certain nbr of seconds */
 void delay(uint32_t  delay_count){

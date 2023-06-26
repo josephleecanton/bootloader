@@ -22,9 +22,10 @@ int main(void){
  	uart_init();
     timebase_init();
     int i = 0;
+    printf("buffer1x\r\n");
 	while(i<10){
 			 i++;
-			 printf("Frank20 the lazy brown fox ran away\r\n");
+			 printf("Frank22 the lazy brown fox%d \r\n",i);
 			 delay(1);
     }
 
