@@ -21,10 +21,11 @@ int main(void){
 	fpu_enable();
  	uart_init();
     timebase_init();
-    int i = 0;
+
     printf("buffer1x\r\n");
-	while(i<10){
-			 i++;
+
+	for (int i=0;i < 10; ++i){
+
 			 printf("Frank22 the lazy brown fox%d \r\n",i);
 			 delay(1);
     }
